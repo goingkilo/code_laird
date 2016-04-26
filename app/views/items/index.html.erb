@@ -1,9 +1,26 @@
 
+<%= javascript_include_tag "jquery-2.1.3.min.js" %>
+<%= javascript_include_tag "bootstrap.min.js" %>
 <%= stylesheet_link_tag "typogridphy.css" %>
+<%= stylesheet_link_tag "bootstrap.min.css" %>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Items</h1>
+<div class="container">
+    <div class="row">
+            <div class="col-md-4">
+
+
+<h1>Items</h1>
+
+</div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
+    </div>
+
+<div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
 
 <table>
   <thead>
@@ -27,6 +44,11 @@
   </tbody>
 </table>
 
-<br>
+</div>
+            <div class="col-md-4">
+            <%= link_to 'New Item', new_item_path %>
+    </div>
+   </div>
 
-<%= link_to 'New Item', new_item_path %>
+
+</div>
