@@ -1,3 +1,3 @@
 class Item < ActiveRecord::Base
-    has_one :users
+    belongs_to:user
 end

@@ -4,7 +4,10 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+	@user = current_user
+    # @items = Item.all
+	@items = @user.items
+	
   end
 
   # GET /items/1
@@ -25,6 +28,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+	@item.user = current_user
 
     respond_to do |format|
       if @item.save

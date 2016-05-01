@@ -13,6 +13,8 @@ default: &default
 development:
   <<: *default
   adapter: postgresql
+  username: postgres
+  password: postgres
   database: code_laid_dev_db
 
 # Warning: The database defined as "test" will be erased and
@@ -21,6 +23,8 @@ development:
 test:
   <<: *default
   adapter: postgresql
+  username: postgres
+  password: postgres
   database: code_laid_test_db
 
 production:
