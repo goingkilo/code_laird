@@ -1,5 +1,9 @@
 class CreateItems < ActiveRecord::Migration
   def change
+	puts "Hello world migration"
+	if table_exists?( :items )
+		puts "TABLE TABLE TABLE"
+	end
 	if !table_exists?( :items )
 		create_table :items do |t|
 	    t.string :data
