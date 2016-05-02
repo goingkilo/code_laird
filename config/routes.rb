@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dash/iching'
+
   devise_for :users
   resources :items
   # The priority is based upon order of creation: first created -> highest priority.
