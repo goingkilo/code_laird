@@ -1,0 +1,91 @@
+<style>
+
+  .stroke {
+    display: block;
+    margin-left: 10px;
+    background-color: #000000;
+    width: 100px;
+    height: 10px;
+    margin: 10px;
+
+  }
+
+  .moving {
+    background-color: #444444;
+  }
+
+  .half-stroke-1 {
+    display: block;
+    margin-left: 10px;
+    background-color: #000000;
+    width: 40px;
+    height: 10px;
+    margin: 10px;
+
+  }
+
+  .half-stroke-2 {
+    display: block;
+    background-color: #000000;
+    width: 30px;
+    height: 10px;
+    margin: 10px;
+
+  }
+
+   .gap {
+    display: block;
+    margin-left:33px;
+    width: 40px;
+    height: 10px;
+    background-color:#F7F7F7 ;
+  }
+
+
+</style>
+
+<script>
+
+  $(document).ready(function () {
+  });
+</script>
+
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+
+  <hr style="width:100%;color:black;">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div id="hexagram">
+        <div id="stroke" class="stroke"></div>
+        <div id="stroke" class="stroke moving"></div>
+             <div class="half-stroke-1">
+                <div class="gap">
+                  <div class="half-stroke-2"></div>
+                </div>
+
+             </div>
+
+
+        <div id="stroke" class="stroke"></div>
+        <div id="stroke" class="stroke"></div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div id='number'></div>
+    </div>
+    <div class="col-md-4">
+    </div>
+  </div>
+
+</div>

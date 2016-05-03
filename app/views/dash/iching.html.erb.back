@@ -1,5 +1,5 @@
 <style>
-    #hexagram-container {
+    #holding {
         width:400px;
         #height:500px;
         #margin-left:400px;
@@ -7,44 +7,45 @@
     }
     #hexagram {
         max-width:120px;
-        margin-left:8px;
+        margin-left:10px;
         width:120px;
         border-color:#000000;
         border-style:solid;
         #float:right;
     }
-    .yang {
+    #yang {
         display:block;
-        margin-left:8px;
+        margin-left:10px;
         background-color:#000000;
         width:100px;
         height:10px;
+
     }
-    .yang-moving {
+    #yang-moving {
         display:block;
-        margin-left:8px;
-        background-color:gray;
+        margin-left:10px;
+        background-color:#4c4c4c;
         width:100px;
         height:10px;
     }
-    .yin {
+    #yin {
         display:block;
-        margin-left:38px;
+        margin-left:40px;
         background-color:#ffffff;
         width:20px;
         height:10px;
 
     }
-    .yin-moving {
+    #yin-moving {
         display:block;
-        margin-left:38px;
+        margin-left:40px;
         background-color:#ffffff;
         width:20px;
         height:10px;
     }
 
-    .gap {
-        margin-left:8px;
+    #gap {
+        margin-left:10px;
         width:150px;
         height:10px;
 
@@ -119,14 +120,14 @@
         '787878':64
     }
 
-    var gap = "<div class='gap'></div>";
+    var gap = "<div id='gap'></div>";
     //var lines = {6:'- - *' ,7 : '---' ,8 : '- -' ,9 : '--- *' } //documentation
 
     var lines = {
-        6: "<div class='yang-moving'><div class='yin-moving'></div></div>",
-        7 : "<div class='yang'></div>" ,
-        8 : "<div class='yang'><div class='yin'></div></div>",
-        9 : "<div class='yang-moving'></div>"
+        6: "<div id='yang-moving'><div id='yin-moving'></div></div>",
+        7 : "<div id='yang'></div>" ,
+        8 : "<div id='yang'><div id='yin'></div></div>",
+        9 : "<div id='yang-moving'></div>"
     };
 
     f = function(){ return Math.random() > 0.5 ? 3 : 2;}
@@ -141,25 +142,19 @@
         //console.log('generated hex:' + hex);
         hex = hex.reverse();
         hex_id = hex.reduce( function(a,b,c,d){ return a +""+ b; } );
-        var h = hex.reduce( r, gap);
         var d = document.getElementById(el);
-        d.innerHTML = h;
-
+        var h = hex.reduce(r,gap);
+        console.log( hex );
         var number =  number_lookup[hex_id.replace(/9/g,'7').replace(/6/g,'8')]; //regex ftw
+        console.log( hex_id + ":: " +number);
+        d.innerHTML = h;
         var number_div = document.getElementById('number');
-        number_div.innerHTML = '<h3>'+number +'</h3>';
-
-        d.href = "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#" + number;
-        $('#hexagram-container').click( function(){
-            window.open("http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#" + number, "_");
-        });
+        number_div.innerHTML = '<h1>'+number +'</h1>';
 
     }
 
     $(document).ready( function() {
         loadHex('hexagram');
-
-
     });
 </script>
 
@@ -170,7 +165,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <h4> Dashboard </h4>
+            <h3> your personal dashboard </h3>
         </div>
         <div class="col-md-4">
         </div>
@@ -179,16 +174,15 @@
         <hr style="width:100%;color:black;">
 
     <div class="row">
-        <div class="col-md-9">
-
+        <div class="col-md-4">
+            <div id='holding'>
+                <div id='hexagram'> </div>
+            </div>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-4">
                 <div id='number'></div>
         </div>
-        <div class="col-md-2">
-            <div id='hexagram-container'>
-              <div id='hexagram'> </div>
-          </div>
+        <div class="col-md-4">
         </div>
     </div>
 
