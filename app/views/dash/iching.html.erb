@@ -1,4 +1,10 @@
 <style>
+
+    @font-face {
+      font-family: 'newspaper';
+      src: font_url('/fonts/OldNewspaperTypes.ttf')  format('truetype');
+    }
+
     #hexagram-container {
         width:400px;
         #height:500px;
@@ -12,6 +18,7 @@
         border-color:#000000;
         border-style:solid;
         #float:right;
+
     }
     .yang {
         display:block;
@@ -49,6 +56,13 @@
         height:10px;
 
     }
+
+    ul {
+      font-family : 'newspaper';
+      border:solid 1px black;
+    }
+
+
 </style>
 
 <script>
@@ -149,16 +163,19 @@
         var number_div = document.getElementById('number');
         number_div.innerHTML = '<h3>'+number +'</h3>';
 
-        d.href = "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#" + number;
-        $('#hexagram-container').click( function(){
-            window.open("http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#" + number, "_");
-        });
 
     }
 
     $(document).ready( function() {
         loadHex('hexagram');
 
+        $('#hexagram-container').click( function(){
+          window.open("http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#" + number, "_");
+        });
+
+        $('#todo').click( function() {
+          document.location = '/items'
+        });
 
     });
 </script>
@@ -169,23 +186,31 @@
 
     <div class="row">
         <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <h4> Dashboard </h4>
+        <div class="col-md-6">
+            <h4> Control Panel : <%= current_user.email %></h4>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
+          <%=button_to "Sign out", destroy_user_session_path, :method => :delete , :class=> "btn btn-default" %>
         </div>
     </div>
 
         <hr style="width:100%;color:black;">
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-4">
+          <ul id="todo">
+            <% @items.each do |item| %>
+              <li>
+                <%= item.project %>:<%=  item.data %>
+              </li>
+                <% end %>
+            </ul>
+        </div>
+        <div class="col-md-6">
 
         </div>
-        <div class="col-md-1">
-                <div id='number'></div>
-        </div>
         <div class="col-md-2">
+          <div id='number'></div>
             <div id='hexagram-container'>
               <div id='hexagram'> </div>
           </div>
