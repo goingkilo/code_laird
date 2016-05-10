@@ -159,18 +159,23 @@
         var d = document.getElementById(el);
         d.innerHTML = h;
 
-        var number =  number_lookup[hex_id.replace(/9/g,'7').replace(/6/g,'8')]; //regex ftw
-        var number_div = document.getElementById('number');
-        number_div.innerHTML = '<h3>'+number +'</h3>';
-
-
+        var h_number =  number_lookup[hex_id.replace(/9/g,'7').replace(/6/g,'8')]; //regex ftw
+        var number_div = document.getElementById('number_div');
+        number_div.innerHTML = '<h3>'+h_number +'</h3>';
+        return  "http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#"  + h_number;
     }
 
     $(document).ready( function() {
-        loadHex('hexagram');
+        var h_url = loadHex('hexagram');
 
         $('#hexagram-container').click( function(){
-          window.open("http://www2.unipr.it/~deyoung/I_Ching_Wilhelm_Translation.html#" + number, "_");
+
+          var w = screen.width /2 ;
+          var h = screen.height/2;
+
+          var strFeatures = "parent=none,width="+w+",height="+h+",left="+w/3+",top="+h/3+",";
+            console.log( h_url );
+            window.open( h_url , "_" , strFeatures);
         });
 
         $('#todo').click( function() {
@@ -210,7 +215,7 @@
 
         </div>
         <div class="col-md-2">
-          <div id='number'></div>
+          <div id='number_div'></div>
             <div id='hexagram-container'>
               <div id='hexagram'> </div>
           </div>
