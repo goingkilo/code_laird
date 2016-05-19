@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
 	@user = current_user
     # @items = Item.all
 	@items = @user.items
-	
   end
 
   # GET /items/1
